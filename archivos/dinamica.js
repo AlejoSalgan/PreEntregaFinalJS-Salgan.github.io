@@ -1,16 +1,28 @@
-// Obtenemos el botón y la caja oculta por su ID
 let bHistoria = document.getElementById('bHistoria');
-let cajaHistoria = document.getElementById('cajaHistoria');
 let bCreador = document.getElementById('bCreador');
-let cajaCreador = document.getElementById('cajaCreador');
 let bCaract = document.getElementById('bCaract');
-let cajaCaract = document.getElementById('cajaCaract');
 let meGusta = document.getElementById('meGusta');
 let noMeGusta = document.getElementById('noMeGusta');
+let cajaHistoria = document.getElementById('cajaHistoria');
+let cajaCaract = document.getElementById('cajaCaract');
+let cajaCreador = document.getElementById('cajaCreador');
+let contadorMeGusta = 0;
+let contadorNoMeGusta = 0;
 
-// Agregamos un escuchador de eventos al botón
+meGusta.addEventListener('click', function (){
+    contadorMeGusta++;
+    localStorage.setItem('megusta',contadorMeGusta);
+});
+
+noMeGusta.addEventListener('click', function (){
+    contadorNoMeGusta++;
+    localStorage.setItem('nomegusta',contadorNoMeGusta);
+});
+
+
+
+
 bHistoria.addEventListener('click', function(){
-    // Cambiamos el estilo de la caja para que sea visible al hacer clic en el botón
     if(cajaHistoria.style.display == 'block'){
         cajaHistoria.style.display = 'none';
     } else {
@@ -39,4 +51,3 @@ bCaract.addEventListener('click', function(){
     cajaHistoria.style.display = 'none';
     cajaCreador.style.display = 'none';
 });
-
