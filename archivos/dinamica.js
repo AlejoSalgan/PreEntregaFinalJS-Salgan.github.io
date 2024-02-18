@@ -17,6 +17,8 @@ const paginaWeb = {
     },
 };
 
+const JSON = JSON.stringify(paginaWeb.contadores);
+
 paginaWeb.botones.meGusta.addEventListener('click', function () {
     paginaWeb.contadores.meGusta++;
     localStorage.setItem('megusta', paginaWeb.contadores.meGusta);
