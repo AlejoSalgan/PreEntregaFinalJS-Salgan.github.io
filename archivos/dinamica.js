@@ -17,16 +17,32 @@ const paginaWeb = {
     },
 };
 
-const JSON = JSON.stringify(paginaWeb.contadores);
+
+paginaWeb.contadores.meGusta = parseInt(localStorage.getItem('megusta')) || 0;
+
+let contadorMG = document.getElementById('contadorMG');
+contadorMG.innerText = paginaWeb.contadores.meGusta;
 
 paginaWeb.botones.meGusta.addEventListener('click', function () {
     paginaWeb.contadores.meGusta++;
     localStorage.setItem('megusta', paginaWeb.contadores.meGusta);
+    contadorMG.innerText = paginaWeb.contadores.meGusta;
 });
 
 paginaWeb.botones.noMeGusta.addEventListener('click', function () {
     paginaWeb.contadores.noMeGusta++;
     localStorage.setItem('nomegusta', paginaWeb.contadores.noMeGusta);
+});
+
+paginaWeb.contadores.noMeGusta = parseInt(localStorage.getItem('nomegusta')) || 0;
+
+let contadornoMG = document.getElementById('contadornoMG');
+contadornoMG.innerText = paginaWeb.contadores.noMeGusta;
+
+paginaWeb.botones.noMeGusta.addEventListener('click', function () {
+    paginaWeb.contadores.noMeGusta++;
+    localStorage.setItem('nomegusta', paginaWeb.contadores.noMeGusta);
+    contadornoMG.innerText = paginaWeb.contadores.noMeGusta;
 });
 
 paginaWeb.botones.bHistoria.addEventListener('click', function () {
