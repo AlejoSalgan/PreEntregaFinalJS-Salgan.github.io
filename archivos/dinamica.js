@@ -17,7 +17,6 @@ const paginaWeb = {
     },
 };
 
-
 paginaWeb.contadores.meGusta = parseInt(localStorage.getItem('megusta')) || 0;
 
 let contadorMG = document.getElementById('contadorMG');
@@ -27,11 +26,6 @@ paginaWeb.botones.meGusta.addEventListener('click', function () {
     paginaWeb.contadores.meGusta++;
     localStorage.setItem('megusta', paginaWeb.contadores.meGusta);
     contadorMG.innerText = paginaWeb.contadores.meGusta;
-});
-
-paginaWeb.botones.noMeGusta.addEventListener('click', function () {
-    paginaWeb.contadores.noMeGusta++;
-    localStorage.setItem('nomegusta', paginaWeb.contadores.noMeGusta);
 });
 
 paginaWeb.contadores.noMeGusta = parseInt(localStorage.getItem('nomegusta')) || 0;
