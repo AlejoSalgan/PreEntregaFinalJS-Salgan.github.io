@@ -82,10 +82,26 @@ button:hover span:after {
     margin-left: 95px
 }
 
+#bModelos {
+    position: absolute;
+    margin-top: 232px;
+    margin-left: 130px
+}
+
 #textoHistoria {
     margin: 30px 20px 50px 20px;
     text-align: center;
     color: white;
+}
+
+#cajaModelos{
+    color: darkorange;
+    position: absolute;
+    border-radius: 5px;
+    width: 500px;
+    height: 450px;
+    margin-left: 350px;
+    margin-top: -50px;
 }
 
 #cajaHistoria {
