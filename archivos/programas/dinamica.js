@@ -1,3 +1,5 @@
+//Acá guarde todos los botones y las cajas
+
 const paginaWeb = {
     botones: {
       bHistoria: document.getElementById('bHistoria'),
@@ -19,19 +21,19 @@ const paginaWeb = {
     },
 };
 
+//Acá guardo la API Fetch y la rescato
 fetch("./modelos.json")
   .then(response => response.json())
   .then(data => (abrirModelos(data)))
   .catch(error => console.error("Error al obtener los datos:", error));
 
+//Acá muestro en un parrafo la API que guardó los modelos de los autos
 function abrirModelos(modelos) {
   paginaWeb.botones.bModelos.addEventListener('click', function () {
       if (cajaModelos.style.display === 'block' || cajaModelos.style.display === '') {
-        // Si los modelos están visibles, oculta el párrafo
         cajaModelos.innerHTML = "";
         cajaModelos.style.display = 'none';
       } else {
-        // Si los modelos no están visibles, muestra el párrafo con los datos
         let modelosString = "";
         modelos.forEach(modelo => {
           modelosString += `Nombre: ${modelo.nombre}, Año: ${modelo.año}<br>`;
@@ -42,6 +44,7 @@ function abrirModelos(modelos) {
     });
 }
 
+//Acá genero una libreria con el nombre de usuario de manera aleatoria
 function generarUsuario() {
   const usuario = {
     nombre: 'usuario' + Math.floor(Math.random() * 1000)
@@ -64,28 +67,33 @@ document.addEventListener('DOMContentLoaded', function() {
   }, 2000)
 });
 
+//Acá guardo los me gusta en el Storage
 paginaWeb.contadores.meGusta = parseInt(localStorage.getItem('megusta')) || 0;
 
 let contadorMG = document.getElementById('contadorMG');
 contadorMG.innerText = paginaWeb.contadores.meGusta;
 
+//Acá los muestro en pantalla
 paginaWeb.botones.meGusta.addEventListener('click', function () {
     paginaWeb.contadores.meGusta++;
     localStorage.setItem('megusta', paginaWeb.contadores.meGusta);
     contadorMG.innerText = paginaWeb.contadores.meGusta;
 });
 
+//Acá guardo los no me gusta en el Storage
 paginaWeb.contadores.noMeGusta = parseInt(localStorage.getItem('nomegusta')) || 0;
 
 let contadornoMG = document.getElementById('contadornoMG');
 contadornoMG.innerText = paginaWeb.contadores.noMeGusta;
 
+//Acá los muestro en pantalla
 paginaWeb.botones.noMeGusta.addEventListener('click', function () {
     paginaWeb.contadores.noMeGusta++;
     localStorage.setItem('nomegusta', paginaWeb.contadores.noMeGusta);
     contadornoMG.innerText = paginaWeb.contadores.noMeGusta;
 });
 
+//Acá en esta parte hago que desaparezcan o aparezcan las cajas con los parrafos correspondientes de cada boton
 paginaWeb.botones.bHistoria.addEventListener('click', function () {
     Visibilidad(paginaWeb.cajas.cajaHistoria);
     EsconderCajas(paginaWeb.cajas.cajaCreador, paginaWeb.cajas.cajaCaract, paginaWeb.cajas.cajaModelos);
@@ -105,6 +113,8 @@ paginaWeb.botones.bModelos.addEventListener('click', function () {
   EsconderCajas(paginaWeb.cajas.cajaHistoria, paginaWeb.cajas.cajaCreador, paginaWeb.cajas.cajaCaract);
 });
 
+
+//Acá esta las funciones que generan la visibilidad o la desaparicion de las cajas cada vez que se hace click en una
 function Visibilidad(elemento) {
     elemento.style.display = (elemento.style.display === 'block') ? 'none' : 'block';
 }
