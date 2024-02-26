@@ -13,7 +13,8 @@ const paginaWeb = {
       cajaHistoria: document.getElementById('cajaHistoria'),
       cajaCaract: document.getElementById('cajaCaract'),
       cajaCreador: document.getElementById('cajaCreador'),
-      cajaModelos: document.getElementById('cajaModelos')
+      cajaModelos: document.getElementById('cajaModelos'),
+      textoModelos: document.getElementById('textoModelos')
     },
     contadores: {
       meGusta: 0,
@@ -30,18 +31,13 @@ fetch("./modelos.json")
 //Acá muestro en un parrafo la API que guardó los modelos de los autos
 function abrirModelos(modelos) {
   paginaWeb.botones.bModelos.addEventListener('click', function () {
-      if (cajaModelos.style.display === 'block' || cajaModelos.style.display === '') {
-        cajaModelos.innerHTML = "";
-        cajaModelos.style.display = 'none';
-      } else {
         let modelosString = "";
         modelos.forEach(modelo => {
           modelosString += `Nombre: ${modelo.nombre}, Año: ${modelo.año}<br>`;
         });
-        cajaModelos.innerHTML = modelosString;
-        cajaModelos.style.display = 'block';
-      }
-    });
+        textoModelos.innerHTML = modelosString;
+        textoModelos.style.display = 'block';
+  });
 }
 
 //Acá genero una libreria con el nombre de usuario de manera aleatoria
@@ -110,6 +106,7 @@ paginaWeb.botones.bCaract.addEventListener('click', function () {
 });
 
 paginaWeb.botones.bModelos.addEventListener('click', function () {
+  Visibilidad(paginaWeb.cajas.cajaModelos);
   EsconderCajas(paginaWeb.cajas.cajaHistoria, paginaWeb.cajas.cajaCreador, paginaWeb.cajas.cajaCaract);
 });
 
